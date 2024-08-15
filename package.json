@@ -1,0 +1,23 @@
+{
+  "name": "my-wordpress-playground-data",
+  "version": "1.0.0",
+  "description": "WordPress Playgroundで利用するデータを格納しているレポジトリです。",
+  "scripts": {
+    "zip:clean-create": "rimraf zips && rimraf zips/*.zip && mkdir -p zips",
+    "zip:archive:theme:tt4-register-custom-fields": "zip -9 -qr zips/tt4-register-custom-fields.zip themes/tt4-register-custom-fields",
+    "zip:archive:themes": "run-s zip:archive:theme:*",
+    "zip:archive": "run-s zip:archive:*",
+    "zip": "npm run zip:clean-create && npm run zip:archive",
+    "wp-env": "wp-env",
+    "stop": "wp-env stop",
+    "start": "wp-env start",
+    "update": "wp-env start --update"
+  },
+  "keywords": [],
+  "author": "Koji Kuno",
+  "devDependencies": {
+    "@wordpress/env": "^10.5.0",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^6.0.1"
+  }
+}
