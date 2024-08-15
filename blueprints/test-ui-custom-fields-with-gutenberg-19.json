@@ -1,0 +1,51 @@
+{
+  "landingPage": "/wp-admin/admin.php?page=gutenberg-experiments",
+  "phpExtensionBundles": [
+    "kitchen-sink"
+  ],
+  "preferredVersions": {
+    "php": "8.1",
+    "wp": "latest"
+  },
+  "steps": [
+    {
+      "step": "login",
+      "username": "admin",
+      "password": "password"
+    },
+    {
+      "step": "setSiteOptions",
+      "options": {
+        "blogname": "Test Custom Fields UI with Gutenberg"
+      }
+    },
+    {
+      "step": "setSiteLanguage",
+      "language": "ja"
+    },
+    {
+      "step": "installPlugin",
+      "pluginZipFile": {
+        "resource": "wordpress.org/plugins",
+        "slug": "gutenberg"
+      },
+      "options": {
+        "activate": true
+      }
+    },
+    {
+      "step": "installTheme",
+      "themeZipFile": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/Olein-jp/my-wordpress-playground-data/main/zips/tt4-register-custom-fields.zip"
+      },
+      "options": {
+        "activate": true
+      }
+    },
+    {
+      "step": "runPHP",
+      "code": "<?php include 'wordpress/wp-load.php'; wp_insert_post(array( 'post_title' => 'Test UI to connect blocks and custom fields', 'post_content' => '<!-- wp:columns {\"verticalAlignment\":\"center\",\"align\":\"wide\",\"style\":{\"border\":{\"width\":\"1px\"},\"spacing\":{\"padding\":{\"top\":\"var:preset|spacing|30\",\"bottom\":\"var:preset|spacing|30\",\"left\":\"var:preset|spacing|30\",\"right\":\"var:preset|spacing|30\"}}},\"borderColor\":\"accent\"} --><div class=\"wp-block-columns alignwide are-vertically-aligned-center has-border-color has-accent-border-color\" style=\"border-width:1px;padding-top:var(--wp--preset--spacing--30);padding-right:var(--wp--preset--spacing--30);padding-bottom:var(--wp--preset--spacing--30);padding-left:var(--wp--preset--spacing--30)\"><!-- wp:column {\"verticalAlignment\":\"center\"} --><div class=\"wp-block-column is-vertically-aligned-center\"><!-- wp:image --><figure class=\"wp-block-image\"><img alt=\"\"/></figure><!-- /wp:image --></div><!-- /wp:column --><!-- wp:column {\"verticalAlignment\":\"center\"} --><div class=\"wp-block-column is-vertically-aligned-center\"><!-- wp:heading --><h2 class=\"wp-block-heading\"></h2><!-- /wp:heading --><!-- wp:paragraph --><p></p><!-- /wp:paragraph --></div><!-- /wp:column --></div><!-- /wp:columns --><!-- wp:heading --><h2 class=\"wp-block-heading\">View input data</h2><!-- /wp:heading --><!-- wp:image {\"metadata\":{\"bindings\":{\"url\":{\"source\":\"core/post-meta\",\"args\":{\"key\":\"cf_image_url\"}}}}} --><figure class=\"wp-block-image\"><img alt=\"\"/></figure><!-- /wp:image --><!-- wp:heading {\"metadata\":{\"bindings\":{\"content\":{\"source\":\"core/post-meta\",\"args\":{\"key\":\"cf_image_title\"}}}}} --><h2 class=\"wp-block-heading\"></h2><!-- /wp:heading --><!-- wp:paragraph {\"metadata\":{\"bindings\":{\"content\":{\"source\":\"core/post-meta\",\"args\":{\"key\":\"cf_image_description\"}}}}} --><p></p><!-- /wp:paragraph --><!-- wp:paragraph --><p></p><!-- /wp:paragraph -->', 'post_status' => 'publish', 'post_author' => 1 )); "
+    }
+  ]
+}
