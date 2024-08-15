@@ -237,6 +237,6 @@ register_meta(
 		'show_in_rest' => true,
 		'single' => true,
 		'type' => 'string',
-		'default' => 'https://picsum.photos/1280/720',
+		'default' => 'https://placehold.jp/1000x1000.png',
 	)
 );
