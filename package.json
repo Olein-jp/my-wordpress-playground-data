@@ -4,7 +4,7 @@
   "description": "WordPress Playgroundで利用するデータを格納しているレポジトリです。",
   "scripts": {
     "zip:clean-create": "rimraf zips && rimraf zips/*.zip && mkdir -p zips",
-    "zip:archive:theme:tt4-register-custom-fields": "zip -9 -qr zips/tt4-register-custom-fields.zip themes/tt4-register-custom-fields",
+    "zip:archive:theme:tt4-register-custom-fields": "cd themes && zip -9 -qr ../zips/tt4-register-custom-fields.zip tt4-register-custom-fields && cd ..",
     "zip:archive:themes": "run-s zip:archive:theme:*",
     "zip:archive": "run-s zip:archive:*",
     "zip": "npm run zip:clean-create && npm run zip:archive",
