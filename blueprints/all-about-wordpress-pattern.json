@@ -1,4 +1,5 @@
 {
+  "landingPage": "/wp-admin/",
   "preferredVersions": {
     "php": "8.1",
     "wp": "latest"
@@ -9,6 +10,9 @@
   "features": {},
   "steps": [
     {
+      "step": "resetData"
+    },
+    {
       "step": "login",
       "username": "admin",
       "password": "password"
@@ -16,7 +20,37 @@
     {
       "step": "setSiteOptions",
       "options": {
-        "blogname": "WordPressのパターンを理解しよう"
+        "blogname": "WordPressのパターンを理解しよう",
+        "WPLANG": "ja_JA",
+        "timezone_string": "Asia/Tokyo",
+        "date_format": "Y年n月j日",
+        "time_format": "'H:i"
+      }
+    },
+    {
+      "step": "mkdir",
+      "path": "/wordpress/wp-content/languages/plugins"
+    },
+    {
+      "step": "mkdir",
+      "path": "/wordpress/wp-content/languages/themes"
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/languages/ja_JA.mo",
+      "data": {
+        "resource": "url",
+        "caption": "Downloading admin-ja_JA.mo",
+        "url": "https://translate.wordpress.org/projects/wp/dev/ja/default/export-translations?format=mo"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/languages/admin-ja_JA.mo",
+      "data": {
+        "resource": "url",
+        "caption": "Downloading admin-ja_JA.mo",
+        "url": "https://translate.wordpress.org/projects/wp/dev/admin/ja/default/export-translations?format=mo"
       }
     },
     {
